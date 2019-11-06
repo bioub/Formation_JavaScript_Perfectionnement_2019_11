@@ -21,6 +21,14 @@ nbs.filter((nb) => nb % 2 === 0)
    .map((nbPair) => nbPair ** 2)
    .forEach((nbPairCarre) => console.log(nbPairCarre));
 
+
+// function forEach(array, cb) {
+//   for (let i = 0; i < array.length; i++) {
+//     const element = array[i];
+//     cb(element, i, array);
+//   }
+// }
+
 console.log('Fin');
 
 // pile d'appels

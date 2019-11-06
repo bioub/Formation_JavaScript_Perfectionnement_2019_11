@@ -16,4 +16,8 @@ const prenoms = ['Jean', 'Eric'];
 prenoms.forEach((prenom) => {
   console.log(hello(prenom));
 });
+
+// for (const prenom of prenoms) {
+//   console.log(hello(prenom));
+// }
 // }())

@@ -3,7 +3,6 @@ const readline = require('readline');
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
-  crlfDelay: 200
 });
 
 function jouer() {
@@ -40,3 +39,11 @@ function jouer() {
 const entierAlea = Math.floor(Math.random() * 100);
 const essais = [];
 jouer();
+
+// ^
+// |
+// |                                 question         question
+// |question                         jouer            jouer
+// |jouer    ...                     =>       ...     =>
+// +---------------------------------ENTREE-----------ENTREE------> temps
+//
