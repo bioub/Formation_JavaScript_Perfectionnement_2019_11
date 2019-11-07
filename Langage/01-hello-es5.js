@@ -7,7 +7,7 @@ function hello(name) {
 
 var prenoms = ['Romain', 'Jean'];
 
-prenoms.forEach(function(prenom) {
+prenoms.forEach((prenom) => {
   console.log(hello(prenom));
 });
 // }())

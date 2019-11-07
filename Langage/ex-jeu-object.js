@@ -83,7 +83,9 @@ Jeu.prototype.jouer = function () {
 // rl, entierAlea et essais comme les variables précédente
 // dans jouer, y accéder via this
 
-const game = new Jeu();
+const game = new Jeu({
+  max: 5,
+});
 game.jouer();
 
 // Exercice 3

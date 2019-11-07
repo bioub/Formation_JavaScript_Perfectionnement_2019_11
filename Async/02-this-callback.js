@@ -12,6 +12,7 @@ class Contact {
   }
   helloAsyncMethod(n1, n2) {
     setTimeout(this.hello.bind(this), 1000);
+    setTimeout(() => this.hello(n1, n2), 1000);
   }
 }
 

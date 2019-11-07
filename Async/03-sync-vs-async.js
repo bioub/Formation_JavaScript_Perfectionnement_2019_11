@@ -33,14 +33,35 @@ fs.readFile('.editorconfig', {encoding: 'UTF-8'}, (err, content) => {
 // ASYNC => Promise / Promesses
 // D'abord avec des bibliothèques : Bluebird / q
 // Normée en ES6
-fs.promises.readFile('.editorconfig', {encoding: 'UTF-8'})
-  .then((content) => fs.promises.writeFile('.editorconfig.copy', content))
+fs.promises.access('copy')
+  .catch((err) => {
+    if (err.code === 'ENOENT') {
+      return fs.promises.mkdir('copy');
+    }
+    throw err;
+  })
+  .then((content) => fs.promises.writeFile('copy/.editorconfig.copy', content))
   .then(() => console.log('COPY ASYNC PROMISE DONE'))
   .catch((err) => console.log(err.message));
+
+async function ensureDir(dirPath) {
+  try {
+    await fs.promises.access(dirPath);
+  }
+  catch (err) {
+    if (err.code === 'ENOENT') {
+      await fs.promises.mkdir(dirPath);
+    }
+    else {
+      throw err;
+    }
+  }
+}
 
 // ASYNC (ES2018) => async / await
 (async () => {
   try {
+    await ensureDir('copy');
     const content = await fs.promises.readFile('.editorconfig', {encoding: 'UTF-8'});
     await fs.promises.writeFile('.editorconfig.copy', content);
     console.log('COPY ASYNC AWAIT DONE');

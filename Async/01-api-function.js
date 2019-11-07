@@ -1,7 +1,7 @@
 // 'use strict';
 
-globalThis.name = 'Romain';
-
+globalThis.name = 'Romain'; // créé une variable globale
+console.log(name);
 function hello(n1, n2) {
   return `Hello ${n1}, ${n2}, my name is ${this.name}`;
 }

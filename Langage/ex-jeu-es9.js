@@ -23,8 +23,8 @@ class Jeu {
   constructor(options = {}) {
     // const min = options.min || 0;
     // const max = options.max !== undefined ? options.max : 100;
-    // const { min = 0, max = 100 } = options;
-    // Object.assign(this, options, {min: 0, max: 100});
+    const { min = 0, max = 100 } = options;
+    // Object.assign(this, {min: 0, max: 100}, options);
     this._rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout

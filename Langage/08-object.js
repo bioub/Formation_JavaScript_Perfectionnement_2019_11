@@ -107,3 +107,5 @@ console.log(coordsA.x); // 1
 console.log(coordsA.sumXY()); // 3
 console.log(coordsA.hasOwnProperty('x')); // true
 console.log(coordsA.hasOwnProperty('sumXY')); // false
+console.log(coordsA.x !== undefined); // true
+console.log(coordsA.sumXY !== undefined); // true
