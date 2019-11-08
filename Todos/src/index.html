@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Todos</title>
+  <style>
+    form.survole {
+      background-color: purple;
+    }
+
+    .row {
+      opacity: 1;
+      transition: opacity ease 1s;
+    }
+
+    .row.fade-out {
+      opacity: 0;
+    }
+  </style>
 </head>
 <body>
   <form class="new-todo">
@@ -21,7 +35,6 @@
       </div>
     -->
   </div>
-  <script src="todos.js" type="module"></script>
   <script src="index.js" type="module"></script>
 </body>
 </html>
