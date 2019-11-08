@@ -1,6 +1,6 @@
 import { addTodo, toggleTodos } from "./todos.js";
 import { remove } from "./dom.js";
-import { fetchTodos } from "./api.js";
+import { fetchTodos, fetchUserById } from "./api.js";
 
 /** @type {HTMLFormElement} */
 const formElt = document.querySelector('.new-todo');
@@ -61,8 +61,29 @@ toggleElt.addEventListener('click', (event) => {
 // requestAnimationFrame(step);
 
 (async () => {
-  const todos = await fetchTodos();
+  // const todos = await fetchTodos();
+  // const user = await fetchUserById(1);
+  const [todos, user] = await Promise.all([
+    fetchTodos(),
+    fetchUserById(1),
+  ]);
   for (const todo of todos) {
+    todo.user = user;
+    delete todo.userId;
     addTodo(todo, divElt);
   }
+  console.log(todos);
 })();
+
+// Exercice AJAX
+// Au submit du formulaire envoyer une requete POST
+// vers https://jsonplaceholder.typicode.com/todos
+// Avec un header Content-type: application/json
+// et en body le json de la todo {"completed": false, "title": "abc"}
+// Le serveur vous répondra en body la todo avec l'id
+// Stocker cet id en data-todo-id de la ligne (div class="row") ou du bouton
+// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Supplying_request_options
+
+// Au click du bouton moins, envoyer une requete DELETE
+// vers https://jsonplaceholder.typicode.com/todos/123
+// (ou 123 est l'id de la todo)

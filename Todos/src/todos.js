@@ -18,7 +18,7 @@ export function addTodo(todo, containerElt) {
   // La checkbox doit être cochée selon la valeur de todo.completed
   // L'input de type text doit être rempli selon todo.title
   // <div class="row">
-  //   <input type="checkbox" name="completed" class="completed">
+  //   <input type="checkbox" name="completed" class="completed" checked>
   //   <input type="text" name="title" class="title">
   //   <button>-</button>
   // </div>
@@ -53,6 +53,9 @@ export function addTodo(todo, containerElt) {
   // -> document.querySelectorAll (à faire au moment du clic)
 }
 
+/**
+ * @param {boolean} mustCheck
+ */
 export function toggleTodos(mustCheck) {
   /** @type {NodeListOf<HTMLInputElement>} */
   const checkboxes = document.querySelectorAll('.completed');
