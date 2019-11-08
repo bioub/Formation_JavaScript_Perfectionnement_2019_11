@@ -8,6 +8,7 @@
 export function addTodo(todo, containerElt) {
 
   const rowElt = document.createElement('div');
+  rowElt.dataset.todoId = todo.id;
   // rowElt.className = 'row';
   rowElt.classList.add('row');
   containerElt.appendChild(rowElt);

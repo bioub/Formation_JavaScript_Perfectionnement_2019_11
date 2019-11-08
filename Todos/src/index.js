@@ -1,6 +1,7 @@
 import { addTodo, toggleTodos } from "./todos.js";
 import { remove } from "./dom.js";
-import { fetchTodos, fetchUserById } from "./api.js";
+import { fetchTodos, fetchUserById, postTodo, deleteTodoById } from "./api.js";
+import { timeout } from "./async.js";
 
 /** @type {HTMLFormElement} */
 const formElt = document.querySelector('.new-todo');
@@ -11,22 +12,24 @@ const divElt = document.querySelector('.list');
 /** @type {HTMLInputElement} */
 const toggleElt = document.querySelector('#toggle');
 
-formElt.addEventListener('submit', (event) => {
+formElt.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  addTodo({
-    id: Math.random(),
+  const todo = await postTodo({
     title: inputElt.value,
     completed: false,
-  }, divElt);
+  });
+
+  addTodo(todo, divElt);
 });
 
-divElt.addEventListener('click', (event) => {
+divElt.addEventListener('click', async (event) => {
   if (event.target instanceof HTMLButtonElement) {
+    const id = event.target.parentNode.dataset.todoId;
+    await deleteTodoById(id);
     event.target.parentNode.classList.add('fade-out');
-    setTimeout(() => {
-      remove(event.target.parentNode);
-    }, 1000);
+    await timeout(1000);
+    remove(event.target.parentNode);
   }
 
 });
