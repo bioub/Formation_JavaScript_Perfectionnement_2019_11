@@ -1,3 +1,6 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 import { addTodo, toggleTodos } from "./todos.js";
 import { remove } from "./dom.js";
 import { fetchTodos, fetchUserById, postTodo, deleteTodoById } from "./api.js";

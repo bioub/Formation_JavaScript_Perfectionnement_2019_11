@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "Todos"
+		},
+		{
+			"path": "API-REST"
 		}
 	],
 	"settings": {}
